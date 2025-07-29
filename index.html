@@ -15,6 +15,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollToPlugin.min.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -84,6 +85,230 @@
       .hero-gold-shadow {
         text-shadow: 0 4px 8px rgba(218, 165, 32, 0.4),
           0 2px 4px rgba(218, 165, 32, 0.3);
+      }
+
+      /* Floating animation for decorative elements */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(2deg);
+        }
+      }
+
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(218, 165, 32, 0.6);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
+      }
+
+      @keyframes slideInFromBottom {
+        from {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInScale {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Interactive hover effects */
+      .hover-lift {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .hover-lift:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Shimmer effect for special elements */
+      .shimmer {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(218, 165, 32, 0.2),
+          transparent
+        );
+        background-size: 200% 100%;
+        animation: shimmer 3s infinite;
+      }
+
+      /* Floating decorative elements */
+      .floating {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      /* Enhanced countdown boxes */
+      .countdown-box {
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .countdown-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+
+      .countdown-box:hover::before {
+        left: 100%;
+      }
+
+      .countdown-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(218, 165, 32, 0.3);
+      }
+
+      /* Enhanced calendar */
+      .calendar-date {
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .calendar-date:hover {
+        transform: scale(1.1);
+        background: linear-gradient(145deg, #daa520, #c1921c);
+        color: white;
+        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.4);
+      }
+
+      /* Message input enhancement */
+      .message-input {
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .message-input:focus {
+        transform: scale(1.02);
+        box-shadow: 0 0 30px rgba(218, 165, 32, 0.2);
+      }
+
+      /* Swiper enhancements */
+      .swiper-slide {
+        transition: all 0.3s ease;
+      }
+
+      .swiper-slide:hover {
+        transform: scale(1.05);
+      }
+
+      /* Navigation dots */
+      .swiper-pagination-bullet {
+        background: #daa520 !important;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+      }
+
+      .swiper-pagination-bullet-active {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+
+      /* Loading animation */
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #daa520;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Scroll indicator */
+      .scroll-indicator {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(218, 165, 32, 0.2);
+        z-index: 1000;
+      }
+
+      .scroll-progress {
+        height: 100%;
+        background: linear-gradient(90deg, #daa520, #c1921c);
+        width: 0%;
+        transition: width 0.1s ease;
+      }
+
+      /* Back to top button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(145deg, #daa520, #c1921c);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(100px);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .back-to-top:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
       }
 
       /* Elements to be animated will be hidden initially */
@@ -209,8 +434,23 @@
     </style>
   </head>
   <body class="antialiased">
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 20 20">
+        <path
+          fill-rule="evenodd"
+          d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </div>
     <header
-      class="parallax-container relative h-screen overflow-hidden text-white"
+      class="parallax-container relative h-[94vh] overflow-hidden text-white"
     >
       <!-- Background Layer -->
       <div
@@ -270,19 +510,19 @@
         </div>
 
         <div class="g-anim flex justify-center space-x-3 md:space-x-6 mb-16">
-          <div class="countdown-box">
+          <div class="countdown-box hover-lift">
             <span id="days" class="countdown-time">0</span
             ><span class="countdown-label">Days</span>
           </div>
-          <div class="countdown-box">
+          <div class="countdown-box hover-lift">
             <span id="hours" class="countdown-time">0</span
             ><span class="countdown-label">Hours</span>
           </div>
-          <div class="countdown-box">
+          <div class="countdown-box hover-lift">
             <span id="minutes" class="countdown-time">0</span
             ><span class="countdown-label">Mins</span>
           </div>
-          <div class="countdown-box">
+          <div class="countdown-box hover-lift">
             <span id="seconds" class="countdown-time">0</span
             ><span class="countdown-label">Secs</span>
           </div>
@@ -290,17 +530,29 @@
 
         <div class="g-anim flex justify-center mb-16">
           <div
-            class="bg-white rounded-2xl hero-gold-shadow w-72 md:w-80 overflow-hidden border-2 border-amber-100"
+            class="bg-white rounded-2xl hero-gold-shadow w-72 md:w-80 overflow-hidden border-2 border-amber-100 hover-lift"
           >
-            <div class="bg-red-800 text-white py-3">
+            <div
+              class="bg-gradient-to-r from-red-800 to-red-700 text-white py-3 shimmer"
+            >
               <h3 class="text-2xl font-semibold">August</h3>
             </div>
             <div class="py-6 text-center">
               <p class="text-gray-500 text-lg">Friday</p>
-              <p class="text-7xl font-bold text-red-800 my-2">29</p>
+              <p class="text-7xl font-bold text-red-800 my-2 calendar-date">
+                29
+              </p>
               <p class="text-gray-500 text-lg">2025</p>
               <p class="text-gray-700 text-xl mt-4">at 7:00 PM onwards</p>
             </div>
+            <!-- Floating decorative elements -->
+            <div
+              class="absolute -top-2 -left-2 w-4 h-4 bg-yellow-400 rounded-full floating opacity-60"
+            ></div>
+            <div
+              class="absolute -bottom-2 -right-2 w-3 h-3 bg-red-400 rounded-full floating opacity-60"
+              style="animation-delay: 2s"
+            ></div>
           </div>
         </div>
       </section>
@@ -314,18 +566,37 @@
           <p class="text-lg text-gray-500 mb-8">Kodambakkam, Chennai, 600024</p>
         </div>
         <div class="g-anim max-w-2xl mx-auto">
-          <div class="map-container">
+          <div class="map-container hover-lift">
             <img
               src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrpscyjUBeGxRe8PphSFcVG9qLm777lwnXuLHnCyPik6CiEWCNl0fri-cjVbxgtDaDSS9YB8EdIvxsSShbWbxbxrRKUIVQ1s4FysfYvSHEaCn5B7Vn7q6b9UflNYL70dGrxen9a=s1360-w1360-h1020-rw"
               alt="Stylized map of the venue location"
               class="w-full h-auto"
             />
+            <!-- Location pin overlay -->
+            <div
+              class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <div
+                class="w-8 h-8 bg-red-600 rounded-full border-4 border-white shadow-lg floating"
+              ></div>
+            </div>
           </div>
           <a
             href="https://www.google.com/maps/search/?api=1&query=Nagayara+Hotels+Kodambakkam+Chennai"
             target="_blank"
-            class="action-button inline-block text-white font-bold py-3 px-8 rounded-full mt-8 text-lg"
+            class="action-button inline-block text-white font-bold py-3 px-8 rounded-full mt-8 text-lg hover-lift"
           >
+            <svg
+              class="inline-block w-5 h-5 mr-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
             Open in Google Maps
           </a>
         </div>
@@ -376,6 +647,7 @@
               </div>
             </div>
           </div>
+          <div class="swiper-pagination"></div>
         </div>
         <p class="g-anim text-gray-500 mt-16 text-sm">...swipe for more...</p>
       </section>
@@ -394,12 +666,23 @@
             class="message-input w-full p-4 rounded-xl shadow-inner text-gray-700"
             rows="5"
             placeholder="Your wishes mean the world to us..."
+            id="messageInput"
           ></textarea>
           <button
             type="button"
-            class="action-button inline-block text-white font-bold py-3 px-8 rounded-full mt-6 text-lg"
-            onclick="alert('Thank you for your beautiful message!')"
+            class="action-button inline-block text-white font-bold py-3 px-8 rounded-full mt-6 text-lg hover-lift"
+            onclick="sendMessage()"
+            id="sendButton"
           >
+            <svg
+              class="inline-block w-5 h-5 mr-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"
+              ></path>
+            </svg>
             Send Message
           </button>
         </div>
@@ -474,23 +757,74 @@
           },
         });
 
-        // General Scroll-Triggered Animations
-        gsap.utils.toArray(".g-anim").forEach((elem) => {
+        // Staggered entrance animations for hero elements
+        gsap.fromTo(
+          ".hero-text-shadow",
+          { y: -50, opacity: 0, scale: 0.9 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            ease: "power3.out",
+            stagger: 0.2,
+            delay: 0.5,
+          }
+        );
+
+        gsap.fromTo(
+          ".hero-gold-shadow",
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            stagger: 0.3,
+            delay: 1,
+          }
+        );
+
+        // General Scroll-Triggered Animations with enhanced effects
+        gsap.utils.toArray(".g-anim").forEach((elem, index) => {
           gsap.fromTo(
             elem,
-            { y: 50, opacity: 0 },
+            { y: 80, opacity: 0, scale: 0.95 },
             {
               y: 0,
               opacity: 1,
-              duration: 1,
+              scale: 1,
+              duration: 1.2,
               ease: "power3.out",
               scrollTrigger: {
                 trigger: elem,
                 start: "top 85%",
-                toggleActions: "play none none none",
+                toggleActions: "play none none reverse",
               },
+              delay: index * 0.1,
             }
           );
+        });
+
+        // Floating elements animation
+        gsap.to(".floating", {
+          y: -20,
+          rotation: 5,
+          duration: 3,
+          ease: "power2.inOut",
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.5,
+        });
+
+        // Countdown boxes pulse effect
+        gsap.to(".countdown-box", {
+          scale: 1.05,
+          duration: 0.5,
+          ease: "power2.inOut",
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.2,
         });
 
         // --- SWIPER INITIALIZATION ---
@@ -498,10 +832,18 @@
           effect: "cards",
           grabCursor: true,
           loop: true,
+          autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+          },
           cardsEffect: {
             slideShadows: true,
             perSlideOffset: 8,
             perSlideRotate: 2,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
           },
         });
 
@@ -528,10 +870,42 @@
           const minutesEl = document.getElementById("minutes");
           const secondsEl = document.getElementById("seconds");
 
-          if (daysEl) daysEl.innerText = days;
-          if (hoursEl) hoursEl.innerText = hours;
-          if (minutesEl) minutesEl.innerText = minutes;
-          if (secondsEl) secondsEl.innerText = seconds;
+          if (daysEl) {
+            gsap.to(daysEl, {
+              scale: 1.2,
+              duration: 0.2,
+              yoyo: true,
+              repeat: 1,
+            });
+            daysEl.innerText = days;
+          }
+          if (hoursEl) {
+            gsap.to(hoursEl, {
+              scale: 1.2,
+              duration: 0.2,
+              yoyo: true,
+              repeat: 1,
+            });
+            hoursEl.innerText = hours;
+          }
+          if (minutesEl) {
+            gsap.to(minutesEl, {
+              scale: 1.2,
+              duration: 0.2,
+              yoyo: true,
+              repeat: 1,
+            });
+            minutesEl.innerText = minutes;
+          }
+          if (secondsEl) {
+            gsap.to(secondsEl, {
+              scale: 1.2,
+              duration: 0.2,
+              yoyo: true,
+              repeat: 1,
+            });
+            secondsEl.innerText = seconds;
+          }
 
           if (distance < 0) {
             clearInterval(countdownFunction);
@@ -541,7 +915,135 @@
             if (secondsEl) secondsEl.innerText = "0";
           }
         }, 1000);
+
+        // Scroll progress indicator
+        window.addEventListener("scroll", function () {
+          const scrollTop = window.pageYOffset;
+          const docHeight = document.body.offsetHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          document.getElementById("scrollProgress").style.width =
+            scrollPercent + "%";
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById("backToTop");
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            backToTop.classList.add("visible");
+          } else {
+            backToTop.classList.remove("visible");
+          }
+        });
+
+        // Enhanced hover effects for interactive elements
+        document.querySelectorAll(".hover-lift").forEach((element) => {
+          element.addEventListener("mouseenter", function () {
+            gsap.to(this, { scale: 1.05, duration: 0.3, ease: "power2.out" });
+          });
+
+          element.addEventListener("mouseleave", function () {
+            gsap.to(this, { scale: 1, duration: 0.3, ease: "power2.out" });
+          });
+        });
+
+        // Calendar date hover effect
+        document
+          .querySelector(".calendar-date")
+          .addEventListener("mouseenter", function () {
+            gsap.to(this, {
+              scale: 1.1,
+              duration: 0.3,
+              ease: "power2.out",
+              boxShadow: "0 8px 25px rgba(218, 165, 32, 0.4)",
+            });
+          });
+
+        document
+          .querySelector(".calendar-date")
+          .addEventListener("mouseleave", function () {
+            gsap.to(this, {
+              scale: 1,
+              duration: 0.3,
+              ease: "power2.out",
+              boxShadow: "0 4px 15px rgba(218, 165, 32, 0.2)",
+            });
+          });
       });
+
+      // Scroll to top function
+      function scrollToTop() {
+        gsap.to(window, { scrollTo: 0, duration: 1, ease: "power2.inOut" });
+      }
+
+      // Enhanced message sending function
+      function sendMessage() {
+        const messageInput = document.getElementById("messageInput");
+        const sendButton = document.getElementById("sendButton");
+        const message = messageInput.value.trim();
+
+        if (message) {
+          // Show loading state
+          sendButton.innerHTML = '<div class="loading-spinner"></div>';
+          sendButton.disabled = true;
+
+          // Simulate sending
+          setTimeout(() => {
+            // Success animation
+            gsap.to(sendButton, {
+              scale: 1.1,
+              duration: 0.2,
+              yoyo: true,
+              repeat: 1,
+              onComplete: () => {
+                sendButton.innerHTML = `
+                   <svg class="inline-block w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                     <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+                   </svg>
+                   Send Message
+                 `;
+                sendButton.disabled = false;
+                messageInput.value = "";
+
+                // Show success message
+                showNotification(
+                  "Thank you for your beautiful message! 💕",
+                  "success"
+                );
+              },
+            });
+          }, 1500);
+        } else {
+          showNotification("Please enter a message first!", "error");
+        }
+      }
+
+      // Notification system
+      function showNotification(message, type = "info") {
+        const notification = document.createElement("div");
+        notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform translate-x-full transition-all duration-300 ${
+          type === "success"
+            ? "bg-green-500 text-white"
+            : type === "error"
+            ? "bg-red-500 text-white"
+            : "bg-blue-500 text-white"
+        }`;
+        notification.textContent = message;
+
+        document.body.appendChild(notification);
+
+        // Animate in
+        gsap.to(notification, { x: 0, duration: 0.3, ease: "power2.out" });
+
+        // Animate out and remove
+        setTimeout(() => {
+          gsap.to(notification, {
+            x: "100%",
+            duration: 0.3,
+            ease: "power2.in",
+            onComplete: () => notification.remove(),
+          });
+        }, 3000);
+      }
     </script>
   </body>
 </html>
