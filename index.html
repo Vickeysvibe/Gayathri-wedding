@@ -5,17 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jai Suriya & Gayathri's Engagement</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Performance Optimizations -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="//unpkg.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//plus.unsplash.com" />
+    <link rel="dns-prefetch" href="//lh3.googleusercontent.com" />
+
+    <!-- Preload critical resources -->
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Tangerine:wght@700&family=Inter:wght@300;400;500&display=swap"
+      as="style"
+    />
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"
+      as="script"
+    />
+
+    <!-- Optimized CDN loading with async/defer -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
 
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
+      media="print"
+      onload="this.media='all'"
     />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollToPlugin.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollToPlugin.min.js"
+      defer
+    ></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,69 +57,37 @@
     />
 
     <style>
-      /* Define custom fonts and styles */
+      /* Critical CSS - Inline for faster rendering */
       body {
         font-family: "Inter", sans-serif;
-        background-color: #fdf8f5; /* A soft, warm off-white */
-        color: #4a2e2a; /* A deep brown for text */
+        background-color: #fdf8f5;
+        color: #4a2e2a;
         overflow-x: hidden;
+        margin: 0;
+        padding: 0;
       }
 
-      h1,
-      h2,
-      h3 {
-        font-family: "Playfair Display", serif;
-      }
-
-      .font-tangerine {
-        font-family: "Tangerine", cursive;
-      }
-
-      /* Gold text effect */
-      .text-gold {
-        background: linear-gradient(145deg, #daa520, #c1921c, #a57e18);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-fill-color: transparent;
-      }
-
-      /* Parallax container */
-      .parallax-container {
-        position: relative;
-        height: 100vh;
-        overflow: hidden;
-      }
-
+      /* Optimize animations for performance */
       .parallax-layer {
         position: absolute;
         width: 100%;
         height: 100%;
         will-change: transform;
+        transform: translateZ(0); /* Force hardware acceleration */
       }
+
+      /* Optimize background images */
       #layer-back {
-        background-image: url("https://plus.unsplash.com/premium_photo-1674235766088-80d8410f9523?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D");
+        background-image: url("https://plus.unsplash.com/premium_photo-1674235766088-80d8410f9523?fm=jpg&q=60&w=1500&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D");
         background-size: cover;
         background-position: center;
         opacity: 0.15;
         transform: scale(1.2);
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
       }
 
-      /* Enhanced shadows for hero content */
-      .hero-content-shadow {
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
-      }
-
-      .hero-text-shadow {
-        text-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.3);
-      }
-
-      .hero-gold-shadow {
-        text-shadow: 0 4px 8px rgba(218, 165, 32, 0.4),
-          0 2px 4px rgba(218, 165, 32, 0.3);
-      }
-
-      /* Floating animation for decorative elements */
+      /* Optimize animations */
       @keyframes float {
         0%,
         100% {
@@ -98,171 +98,26 @@
         }
       }
 
-      @keyframes pulse-glow {
-        0%,
-        100% {
-          box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
-        }
-        50% {
-          box-shadow: 0 0 40px rgba(218, 165, 32, 0.6);
-        }
-      }
-
-      @keyframes shimmer {
-        0% {
-          background-position: -200% center;
-        }
-        100% {
-          background-position: 200% center;
-        }
-      }
-
-      @keyframes slideInFromBottom {
-        from {
-          transform: translateY(100px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeInScale {
-        from {
-          transform: scale(0.8);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-
-      /* Interactive hover effects */
-      .hover-lift {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .hover-lift:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      /* Shimmer effect for special elements */
-      .shimmer {
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(218, 165, 32, 0.2),
-          transparent
-        );
-        background-size: 200% 100%;
-        animation: shimmer 3s infinite;
-      }
-
-      /* Floating decorative elements */
       .floating {
         animation: float 6s ease-in-out infinite;
+        will-change: transform;
       }
 
-      /* Enhanced countdown boxes */
+      /* Optimize countdown boxes */
       .countdown-box {
         transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
+        will-change: transform;
       }
 
-      .countdown-box::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        transition: left 0.5s ease;
+      /* Optimize hover effects */
+      .hover-lift {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
       }
 
-      .countdown-box:hover::before {
-        left: 100%;
-      }
-
-      .countdown-box:hover {
-        transform: scale(1.05);
-        box-shadow: 0 10px 30px rgba(218, 165, 32, 0.3);
-      }
-
-      /* Enhanced calendar */
-      .calendar-date {
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      .calendar-date:hover {
-        transform: scale(1.1);
-        background: linear-gradient(145deg, #daa520, #c1921c);
-        color: white;
-        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.4);
-      }
-
-      /* Message input enhancement */
-      .message-input {
-        transition: all 0.3s ease;
-        position: relative;
-      }
-
-      .message-input:focus {
-        transform: scale(1.02);
-        box-shadow: 0 0 30px rgba(218, 165, 32, 0.2);
-      }
-
-      /* Swiper enhancements */
-      .swiper-slide {
-        transition: all 0.3s ease;
-      }
-
-      .swiper-slide:hover {
-        transform: scale(1.05);
-      }
-
-      /* Navigation dots */
-      .swiper-pagination-bullet {
-        background: #daa520 !important;
-        opacity: 0.5;
-        transition: all 0.3s ease;
-      }
-
-      .swiper-pagination-bullet-active {
-        opacity: 1;
-        transform: scale(1.2);
-      }
-
-      /* Loading animation */
-      .loading-spinner {
-        width: 40px;
-        height: 40px;
-        border: 4px solid #f3f3f3;
-        border-top: 4px solid #daa520;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      /* Scroll indicator */
+      /* Optimize scroll indicator */
       .scroll-indicator {
         position: fixed;
         top: 0;
@@ -271,16 +126,10 @@
         height: 4px;
         background: rgba(218, 165, 32, 0.2);
         z-index: 1000;
+        will-change: width;
       }
 
-      .scroll-progress {
-        height: 100%;
-        background: linear-gradient(90deg, #daa520, #c1921c);
-        width: 0%;
-        transition: width 0.1s ease;
-      }
-
-      /* Back to top button */
+      /* Optimize back to top button */
       .back-to-top {
         position: fixed;
         bottom: 30px;
@@ -299,6 +148,7 @@
         transition: all 0.3s ease;
         z-index: 1000;
         box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3);
+        will-change: transform, opacity;
       }
 
       .back-to-top.visible {
@@ -311,13 +161,199 @@
         box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
       }
 
-      /* Elements to be animated will be hidden initially */
+      .scroll-progress {
+        height: 100%;
+        background: linear-gradient(90deg, #daa520, #c1921c);
+        width: 0%;
+        transition: width 0.1s ease;
+      }
+
+      /* Optimize loading spinner */
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #daa520;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        will-change: transform;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Optimize shimmer effect */
+      .shimmer {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(218, 165, 32, 0.2),
+          transparent
+        );
+        background-size: 200% 100%;
+        animation: shimmer 3s infinite;
+        will-change: background-position;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% center;
+        }
+        100% {
+          background-position: 200% center;
+        }
+      }
+
+      /* Optimize text shadows */
+      .hero-text-shadow {
+        text-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-gold-shadow {
+        text-shadow: 0 4px 8px rgba(218, 165, 32, 0.4),
+          0 2px 4px rgba(218, 165, 32, 0.3);
+      }
+
+      /* Optimize section dividers */
+      .section-divider {
+        height: 60px;
+        width: 100%;
+        background-image: url("https://www.transparentpng.com/thumb/indian-wedding-design/indian-wedding-design-elements-png-image-2.png");
+        background-size: auto 60px;
+        background-repeat: repeat-x;
+        background-position: center;
+        opacity: 0.6;
+        will-change: opacity;
+      }
+
+      /* Optimize map container */
+      .map-container {
+        border-radius: 1.5rem;
+        overflow: hidden;
+        border: 4px solid white;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        will-change: transform;
+      }
+
+      /* Optimize message input */
+      .message-input {
+        background-color: #fffaf0;
+        border: 1px solid #f3dcc4;
+        transition: all 0.3s ease;
+        will-change: transform, box-shadow;
+      }
+
+      .message-input:focus {
+        outline: none;
+        border-color: #daa520;
+        box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
+        transform: scale(1.02);
+      }
+
+      /* Optimize action buttons */
+      .action-button {
+        background: linear-gradient(145deg, #8b4513, #a0522d);
+        transition: all 0.3s ease;
+        will-change: transform, box-shadow;
+      }
+
+      .action-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
+      }
+
+      /* Optimize countdown timer */
+      .countdown-time {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #8b4513;
+        will-change: transform;
+      }
+
+      .countdown-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #a0522d;
+      }
+
+      /* Optimize calendar date */
+      .calendar-date {
+        transition: all 0.3s ease;
+        cursor: pointer;
+        will-change: transform, background, color, box-shadow;
+      }
+
+      .calendar-date:hover {
+        transform: scale(1.1);
+        background: linear-gradient(145deg, #daa520, #c1921c);
+        color: white;
+        box-shadow: 0 4px 15px rgba(218, 165, 32, 0.4);
+      }
+
+      /* Optimize swiper slides */
+      .swiper-slide {
+        transition: all 0.3s ease;
+        will-change: transform;
+      }
+
+      .swiper-slide:hover {
+        transform: scale(1.05);
+      }
+
+      /* Optimize swiper pagination */
+      .swiper-pagination-bullet {
+        background: #daa520 !important;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+        will-change: opacity, transform;
+      }
+
+      .swiper-pagination-bullet-active {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+
+      /* Optimize gold text effect */
+      .text-gold {
+        background: linear-gradient(145deg, #daa520, #c1921c, #a57e18);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+
+      /* Optimize font loading */
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+      }
+
+      .font-tangerine {
+        font-family: "Tangerine", cursive;
+      }
+
+      /* Optimize parallax container */
+      .parallax-container {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Optimize elements to be animated */
       .g-anim {
         opacity: 0;
         transform: translateY(40px);
+        will-change: opacity, transform;
       }
 
-      /* Swiper Card Styles */
+      /* Optimize swiper */
       .swiper {
         width: 100%;
         max-width: 320px;
@@ -349,17 +385,7 @@
         border-radius: 1.5rem;
       }
 
-      .section-divider {
-        height: 60px;
-        width: 100%;
-        background-image: url("https://www.transparentpng.com/thumb/indian-wedding-design/indian-wedding-design-elements-png-image-2.png");
-        background-size: auto 60px;
-        background-repeat: repeat-x;
-        background-position: center;
-        opacity: 0.6;
-      }
-
-      /* Countdown Timer */
+      /* Optimize countdown boxes */
       .countdown-box {
         background: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(5px);
@@ -373,63 +399,72 @@
         flex-direction: column;
         justify-content: center;
       }
+
       .countdown-box span {
         display: block;
       }
-      .countdown-time {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #8b4513;
-      }
-      .countdown-label {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        color: #a0522d;
+
+      .countdown-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.5s ease;
       }
 
-      /* Map Section */
-      .map-container {
-        border-radius: 1.5rem;
-        overflow: hidden;
-        border: 4px solid white;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      .countdown-box:hover::before {
+        left: 100%;
       }
 
-      /* Shared Button Style */
-      .action-button {
-        background: linear-gradient(145deg, #8b4513, #a0522d);
-        transition: all 0.3s ease;
-      }
-      .action-button:hover {
-        transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
+      .countdown-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(218, 165, 32, 0.3);
       }
 
-      /* Message Input */
-      .message-input {
-        background-color: #fffaf0;
-        border: 1px solid #f3dcc4;
-        transition: all 0.3s ease;
-      }
-      .message-input:focus {
-        outline: none;
-        border-color: #daa520;
-        box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
-      }
-      /* New decorative floating elements */
-      #layer-mid {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        height: 50%;
-        bottom: 0;
-        pointer-events: none;
+      /* Responsive optimizations */
+      @media (max-width: 768px) {
+        .parallax-container {
+          height: 94vh;
+        }
+
+        .countdown-box {
+          width: 60px;
+          height: 60px;
+        }
+
+        .countdown-time {
+          font-size: 1.5rem;
+        }
       }
 
-      /* Adjust header spacing */
-      header.parallax-container .relative {
-        padding-top: 0;
-        padding-bottom: 0;
+      @media (max-width: 480px) {
+        .countdown-box {
+          width: 50px;
+          height: 50px;
+        }
+
+        .countdown-time {
+          font-size: 1.2rem;
+        }
+      }
+
+      /* Reduce motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
       }
     </style>
   </head>
@@ -487,7 +522,7 @@
       <!-- Bride & Groom Image (BOTTOM HALF) -->
       <div
         id="layer-mid"
-        class="parallax-layer absolute bottom-12 w-full z-5 flex justify-center items-start h-2/3 pointer-events-none"
+        class="parallax-layer absolute bottom-12 w-[80%] ml-[10%] z-5 flex justify-center items-end h-2/3 pointer-events-none"
       >
         <img
           src="assets/bride-groom.png"
@@ -716,45 +751,64 @@
     </main>
 
     <script>
+      // Performance optimization: Debounce scroll events
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+
+      // Performance optimization: Throttle scroll events
+      function throttle(func, limit) {
+        let inThrottle;
+        return function () {
+          const args = arguments;
+          const context = this;
+          if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => (inThrottle = false), limit);
+          }
+        };
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         // --- GSAP & ScrollTrigger SETUP ---
         gsap.registerPlugin(ScrollTrigger);
 
-        // Enhanced Parallax Effect
+        // Optimized Parallax Effect with reduced complexity
+        const parallaxConfig = {
+          trigger: ".parallax-container",
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        };
+
         gsap.to("#layer-back", {
           y: -200,
           scale: 1.3,
           ease: "none",
-          scrollTrigger: {
-            trigger: ".parallax-container",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1,
-          },
+          scrollTrigger: parallaxConfig,
         });
 
         gsap.to("#layer-mid", {
           y: -150,
           scale: 1.1,
           ease: "none",
-          scrollTrigger: {
-            trigger: ".parallax-container",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1,
-          },
+          scrollTrigger: parallaxConfig,
         });
 
-        // Add subtle rotation for more dynamic effect
+        // Optimized rotation effect
         gsap.to("#layer-back", {
           rotation: 2,
           ease: "none",
-          scrollTrigger: {
-            trigger: ".parallax-container",
-            start: "top top",
-            end: "bottom top",
-            scrub: 1,
-          },
+          scrollTrigger: parallaxConfig,
         });
 
         // Staggered entrance animations for hero elements
@@ -916,24 +970,32 @@
           }
         }, 1000);
 
-        // Scroll progress indicator
-        window.addEventListener("scroll", function () {
+        // Optimized scroll progress indicator with throttling
+        const updateScrollProgress = throttle(function () {
           const scrollTop = window.pageYOffset;
           const docHeight = document.body.offsetHeight - window.innerHeight;
           const scrollPercent = (scrollTop / docHeight) * 100;
-          document.getElementById("scrollProgress").style.width =
-            scrollPercent + "%";
+          const progressBar = document.getElementById("scrollProgress");
+          if (progressBar) {
+            progressBar.style.width = scrollPercent + "%";
+          }
+        }, 16); // ~60fps
+
+        window.addEventListener("scroll", updateScrollProgress, {
+          passive: true,
         });
 
-        // Back to top button
+        // Optimized back to top button with throttling
         const backToTop = document.getElementById("backToTop");
-        window.addEventListener("scroll", function () {
+        const updateBackToTop = throttle(function () {
           if (window.pageYOffset > 300) {
             backToTop.classList.add("visible");
           } else {
             backToTop.classList.remove("visible");
           }
-        });
+        }, 100);
+
+        window.addEventListener("scroll", updateBackToTop, { passive: true });
 
         // Enhanced hover effects for interactive elements
         document.querySelectorAll(".hover-lift").forEach((element) => {
