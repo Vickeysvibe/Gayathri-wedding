@@ -3,23 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aarav & Priya's Engagement</title>
+    <title>Jai Suriya & Gayathri's Engagement</title>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Swiper.js for Photo Gallery -->
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-    <!-- GSAP Animation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -75,25 +71,11 @@
       }
 
       #layer-back {
-        background-image: url("https://i.pinimg.com/originals/5a/ae/9e/5aae9e7de7c6513a25c48a85a4439054.jpg");
+        background-image: url("https://plus.unsplash.com/premium_photo-1674235766088-80d8410f9523?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8d2VkZGluZyUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D");
         background-size: cover;
         background-position: center;
         opacity: 0.15;
         transform: scale(1.2);
-      }
-
-      #layer-decor-left {
-        background-image: url("https://i.imgur.com/gO2hg3X.png");
-        background-position: top left;
-        background-size: 250px auto;
-        background-repeat: no-repeat;
-      }
-
-      #layer-decor-right {
-        background-image: url("https://i.imgur.com/2U2d1gR.png");
-        background-position: top right;
-        background-size: 250px auto;
-        background-repeat: no-repeat;
       }
 
       /* Elements to be animated will be hidden initially */
@@ -180,25 +162,34 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       }
 
-      /* RSVP Button */
-      .rsvp-button {
+      /* Shared Button Style */
+      .action-button {
         background: linear-gradient(145deg, #8b4513, #a0522d);
         transition: all 0.3s ease;
       }
-      .rsvp-button:hover {
+      .action-button:hover {
         transform: translateY(-3px) scale(1.05);
         box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
+      }
+
+      /* Message Input */
+      .message-input {
+        background-color: #fffaf0;
+        border: 1px solid #f3dcc4;
+        transition: all 0.3s ease;
+      }
+      .message-input:focus {
+        outline: none;
+        border-color: #daa520;
+        box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.2);
       }
     </style>
   </head>
   <body class="antialiased">
-    <!-- Hero Section with Parallax -->
     <header
       class="parallax-container flex items-center justify-center text-center"
     >
       <div id="layer-back" class="parallax-layer"></div>
-      <div id="layer-decor-left" class="parallax-layer"></div>
-      <div id="layer-decor-right" class="parallax-layer"></div>
 
       <div class="z-10 relative px-4">
         <h2
@@ -207,9 +198,11 @@
           We're getting engaged!
         </h2>
         <h1
-          class="g-anim text-6xl md:text-8xl lg:text-9xl my-2 font-medium text-gray-800"
+          class="g-anim text-6xl md:text-8xl lg:text-9xl my-4 font-medium text-gray-800"
         >
-          Aarav & Priya
+          Jai Suriya <br />
+          & <br />
+          Gayathri
         </h1>
         <p class="g-anim text-lg md:text-xl text-gray-600 mt-2">
           request the pleasure of your company
@@ -217,9 +210,7 @@
       </div>
     </header>
 
-    <!-- Main Content -->
     <main class="relative bg-[#FDF8F5] z-10 py-12 lg:py-20">
-      <!-- Invitation Details Section -->
       <section class="container mx-auto px-6 text-center">
         <div class="g-anim">
           <h2 class="text-4xl md:text-5xl text-gold mb-4">
@@ -231,7 +222,6 @@
           </p>
         </div>
 
-        <!-- Countdown Timer -->
         <div class="g-anim flex justify-center space-x-3 md:space-x-6 mb-16">
           <div class="countdown-box">
             <span id="days" class="countdown-time">0</span
@@ -251,7 +241,6 @@
           </div>
         </div>
 
-        <!-- Calendar -->
         <div class="g-anim flex justify-center mb-16">
           <div
             class="bg-white rounded-2xl shadow-xl w-72 md:w-80 overflow-hidden border-2 border-amber-100"
@@ -269,31 +258,26 @@
         </div>
       </section>
 
-      <div class="section-divider my-12"></div>
+      <div class="section-divider my-6"></div>
 
-      <!-- Venue & Map Section -->
       <section class="container mx-auto px-6 text-center py-12">
         <div class="g-anim">
           <h2 class="text-4xl md:text-5xl text-gold mb-4">The Venue</h2>
-          <p class="text-2xl text-gray-700 font-semibold">
-            The Grand Palace Hall
-          </p>
-          <p class="text-lg text-gray-500 mb-8">
-            123 Wedding Avenue, Chennai, Tamil Nadu
-          </p>
+          <p class="text-2xl text-gray-700 font-semibold">Nagayara Hotels</p>
+          <p class="text-lg text-gray-500 mb-8">Kodambakkam, Chennai, 600024</p>
         </div>
         <div class="g-anim max-w-2xl mx-auto">
           <div class="map-container">
             <img
-              src="https://i.imgur.com/uVp8i6u.png"
+              src="https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrpscyjUBeGxRe8PphSFcVG9qLm777lwnXuLHnCyPik6CiEWCNl0fri-cjVbxgtDaDSS9YB8EdIvxsSShbWbxbxrRKUIVQ1s4FysfYvSHEaCn5B7Vn7q6b9UflNYL70dGrxen9a=s1360-w1360-h1020-rw"
               alt="Stylized map of the venue location"
               class="w-full h-auto"
             />
           </div>
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Chennai"
+            href="https://www.google.com/maps/search/?api=1&query=Nagayara+Hotels+Kodambakkam+Chennai"
             target="_blank"
-            class="rsvp-button inline-block text-white font-bold py-3 px-8 rounded-full mt-8 text-lg"
+            class="action-button inline-block text-white font-bold py-3 px-8 rounded-full mt-8 text-lg"
           >
             Open in Google Maps
           </a>
@@ -302,8 +286,7 @@
 
       <div class="section-divider my-12"></div>
 
-      <!-- Photo Gallery Section -->
-      <section class="container mx-auto px-6 text-center py-12">
+      <section class="container mx-auto px-6 text-center my-10">
         <div class="g-anim">
           <h2 class="text-4xl md:text-5xl text-gold mb-4">Our Journey</h2>
           <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-600 mb-12">
@@ -311,11 +294,10 @@
           </p>
         </div>
 
-        <!-- Swiper -->
         <div class="g-anim swiper">
           <div class="swiper-wrapper">
             <div
-              class="swiper-slide"
+              class="swiper-slide font-tangerine"
               style="background-image: url('assets/img1.jpg')"
             >
               <div class="card-content">
@@ -348,23 +330,57 @@
             </div>
           </div>
         </div>
-        <p class="g-anim text-gray-500 mt-4 text-sm">...swipe for more...</p>
+        <p class="g-anim text-gray-500 mt-16 text-sm">...swipe for more...</p>
       </section>
 
-      <div class="section-divider my-12"></div>
+      <div class="section-divider my-6"></div>
 
-      <!-- Footer -->
+      <section class="container mx-auto px-6 text-center py-12">
+        <div class="g-anim max-w-2xl mx-auto">
+          <h2 class="text-4xl md:text-5xl text-gold mb-4">
+            Share Your Blessings
+          </h2>
+          <p class="mx-auto text-base md:text-lg text-gray-600 mb-8">
+            Leave a message for the happy couple!
+          </p>
+          <textarea
+            class="message-input w-full p-4 rounded-xl shadow-inner text-gray-700"
+            rows="5"
+            placeholder="Your wishes mean the world to us..."
+          ></textarea>
+          <button
+            type="button"
+            class="action-button inline-block text-white font-bold py-3 px-8 rounded-full mt-6 text-lg"
+            onclick="alert('Thank you for your beautiful message!')"
+          >
+            Send Message
+          </button>
+        </div>
+      </section>
+      <div class="section-divider my-6"></div>
+
       <footer class="text-center py-12 px-6">
         <div class="g-anim">
           <h3 class="text-3xl text-gold mb-4">With Best Compliments</h3>
           <p class="text-lg text-gray-700">from friends and family.</p>
-          <a
-            href="mailto:youremail@example.com?subject=RSVP for Aarav & Priya's Engagement"
-            class="rsvp-button inline-block text-white font-bold py-4 px-10 rounded-full mt-8 text-xl"
-          >
-            RSVP
-          </a>
-          <p class="mt-8 text-gray-500">We can't wait to celebrate with you!</p>
+
+          <div class="mt-12">
+            <p
+              class="font-tangerine text-5xl md:text-6xl"
+              style="
+                background: linear-gradient(145deg, #a0522d, #8b4513);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+              "
+            >
+              We await your presence
+            </p>
+            <p class="text-gray-600 mt-2 text-lg">
+              Looking forward to celebrating this new chapter with you.
+            </p>
+          </div>
         </div>
       </footer>
     </main>
@@ -378,11 +394,7 @@
         gsap.to(".parallax-layer", {
           y: (i, target) =>
             -ScrollTrigger.maxScroll(window) *
-            (target.id === "layer-back"
-              ? 0.1
-              : target.id === "layer-decor-left"
-              ? 0.3
-              : 0.25),
+            (target.id === "layer-back" ? 0.1 : 0.25),
           ease: "none",
           scrollTrigger: {
             trigger: ".parallax-container",
@@ -390,15 +402,6 @@
             end: "bottom top",
             scrub: true,
           },
-        });
-
-        // Initial Hero Animation
-        gsap.from(".hero-text", {
-          duration: 1,
-          y: 50,
-          opacity: 0,
-          stagger: 0.2,
-          ease: "power3.out",
         });
 
         // General Scroll-Triggered Animations
@@ -439,25 +442,33 @@
           const now = new Date().getTime();
           const distance = countdownDate - now;
 
-          document.getElementById("days").innerText = Math.floor(
-            distance / (1000 * 60 * 60 * 24)
-          );
-          document.getElementById("hours").innerText = Math.floor(
+          // Time calculations
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor(
             (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
           );
-          document.getElementById("minutes").innerText = Math.floor(
+          const minutes = Math.floor(
             (distance % (1000 * 60 * 60)) / (1000 * 60)
           );
-          document.getElementById("seconds").innerText = Math.floor(
-            (distance % (1000 * 60)) / 1000
-          );
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          // Update elements if they exist
+          const daysEl = document.getElementById("days");
+          const hoursEl = document.getElementById("hours");
+          const minutesEl = document.getElementById("minutes");
+          const secondsEl = document.getElementById("seconds");
+
+          if (daysEl) daysEl.innerText = days;
+          if (hoursEl) hoursEl.innerText = hours;
+          if (minutesEl) minutesEl.innerText = minutes;
+          if (secondsEl) secondsEl.innerText = seconds;
 
           if (distance < 0) {
             clearInterval(countdownFunction);
-            document.getElementById("days").innerText = "0";
-            document.getElementById("hours").innerText = "0";
-            document.getElementById("minutes").innerText = "0";
-            document.getElementById("seconds").innerText = "0";
+            if (daysEl) daysEl.innerText = "0";
+            if (hoursEl) hoursEl.innerText = "0";
+            if (minutesEl) minutesEl.innerText = "0";
+            if (secondsEl) secondsEl.innerText = "0";
           }
         }, 1000);
       });
