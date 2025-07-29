@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aarav & Priya's Engagement</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Swiper.js for Photo Gallery -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Tangerine:wght@700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Define custom fonts and styles */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #fdf8f5; /* A soft, warm off-white */
+        color: #4a2e2a; /* A deep brown for text */
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif;
+      }
+
+      .font-tangerine {
+        font-family: "Tangerine", cursive;
+      }
+
+      /* Gold text effect */
+      .text-gold {
+        background: linear-gradient(145deg, #daa520, #c1921c, #a57e18);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+
+      /* Parallax container */
+      .parallax-container {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      /* Parallax layers */
+      .parallax-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      #layer-back {
+        background-image: url("https://i.pinimg.com/originals/5a/ae/9e/5aae9e7de7c6513a25c48a85a4439054.jpg");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.15;
+        transform: scale(1.2);
+      }
+
+      #layer-decor-left {
+        background-image: url("https://i.imgur.com/gO2hg3X.png");
+        background-position: top left;
+        background-size: 250px auto;
+        background-repeat: no-repeat;
+      }
+
+      #layer-decor-right {
+        background-image: url("https://i.imgur.com/2U2d1gR.png");
+        background-position: top right;
+        background-size: 250px auto;
+        background-repeat: no-repeat;
+      }
+
+      /* Elements to be animated will be hidden initially */
+      .g-anim {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      /* Swiper Card Styles */
+      .swiper {
+        width: 100%;
+        max-width: 320px;
+        height: 420px;
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+
+      .swiper-slide {
+        background-position: center;
+        background-size: cover;
+        width: 300px;
+        height: 400px;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        display: flex;
+        align-items: flex-end;
+        padding: 1.5rem;
+        background-color: #e0e0e0;
+      }
+
+      .swiper-slide .card-content {
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .swiper-slide-shadow-card {
+        border-radius: 1.5rem;
+      }
+
+      .section-divider {
+        height: 60px;
+        width: 100%;
+        background-image: url("https://www.transparentpng.com/thumb/indian-wedding-design/indian-wedding-design-elements-png-image-2.png");
+        background-size: auto 60px;
+        background-repeat: repeat-x;
+        background-position: center;
+        opacity: 0.6;
+      }
+
+      /* Countdown Timer */
+      .countdown-box {
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        border: 1px solid rgba(218, 165, 32, 0.2);
+        border-radius: 1rem;
+        padding: 1rem;
+        text-align: center;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .countdown-box span {
+        display: block;
+      }
+      .countdown-time {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #8b4513;
+      }
+      .countdown-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #a0522d;
+      }
+
+      /* Map Section */
+      .map-container {
+        border-radius: 1.5rem;
+        overflow: hidden;
+        border: 4px solid white;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* RSVP Button */
+      .rsvp-button {
+        background: linear-gradient(145deg, #8b4513, #a0522d);
+        transition: all 0.3s ease;
+      }
+      .rsvp-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <!-- Hero Section with Parallax -->
+    <header
+      class="parallax-container flex items-center justify-center text-center"
+    >
+      <div id="layer-back" class="parallax-layer"></div>
+      <div id="layer-decor-left" class="parallax-layer"></div>
+      <div id="layer-decor-right" class="parallax-layer"></div>
+
+      <div class="z-10 relative px-4">
+        <h2
+          class="g-anim text-3xl md:text-4xl font-tangerine text-gold tracking-wider"
+        >
+          We're getting engaged!
+        </h2>
+        <h1
+          class="g-anim text-6xl md:text-8xl lg:text-9xl my-2 font-medium text-gray-800"
+        >
+          Aarav & Priya
+        </h1>
+        <p class="g-anim text-lg md:text-xl text-gray-600 mt-2">
+          request the pleasure of your company
+        </p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative bg-[#FDF8F5] z-10 py-12 lg:py-20">
+      <!-- Invitation Details Section -->
+      <section class="container mx-auto px-6 text-center">
+        <div class="g-anim">
+          <h2 class="text-4xl md:text-5xl text-gold mb-4">
+            Join Us In Celebration
+          </h2>
+          <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-600 mb-10">
+            As we take our first step towards a lifetime of togetherness, your
+            presence is the greatest gift to us.
+          </p>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="g-anim flex justify-center space-x-3 md:space-x-6 mb-16">
+          <div class="countdown-box">
+            <span id="days" class="countdown-time">0</span
+            ><span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-box">
+            <span id="hours" class="countdown-time">0</span
+            ><span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-box">
+            <span id="minutes" class="countdown-time">0</span
+            ><span class="countdown-label">Mins</span>
+          </div>
+          <div class="countdown-box">
+            <span id="seconds" class="countdown-time">0</span
+            ><span class="countdown-label">Secs</span>
+          </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="g-anim flex justify-center mb-16">
+          <div
+            class="bg-white rounded-2xl shadow-xl w-72 md:w-80 overflow-hidden border-2 border-amber-100"
+          >
+            <div class="bg-red-800 text-white py-3">
+              <h3 class="text-2xl font-semibold">August</h3>
+            </div>
+            <div class="py-6 text-center">
+              <p class="text-gray-500 text-lg">Friday</p>
+              <p class="text-7xl font-bold text-red-800 my-2">29</p>
+              <p class="text-gray-500 text-lg">2025</p>
+              <p class="text-gray-700 text-xl mt-4">at 7:00 PM onwards</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="section-divider my-12"></div>
+
+      <!-- Venue & Map Section -->
+      <section class="container mx-auto px-6 text-center py-12">
+        <div class="g-anim">
+          <h2 class="text-4xl md:text-5xl text-gold mb-4">The Venue</h2>
+          <p class="text-2xl text-gray-700 font-semibold">
+            The Grand Palace Hall
+          </p>
+          <p class="text-lg text-gray-500 mb-8">
+            123 Wedding Avenue, Chennai, Tamil Nadu
+          </p>
+        </div>
+        <div class="g-anim max-w-2xl mx-auto">
+          <div class="map-container">
+            <img
+              src="https://i.imgur.com/uVp8i6u.png"
+              alt="Stylized map of the venue location"
+              class="w-full h-auto"
+            />
+          </div>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Chennai"
+            target="_blank"
+            class="rsvp-button inline-block text-white font-bold py-3 px-8 rounded-full mt-8 text-lg"
+          >
+            Open in Google Maps
+          </a>
+        </div>
+      </section>
+
+      <div class="section-divider my-12"></div>
+
+      <!-- Photo Gallery Section -->
+      <section class="container mx-auto px-6 text-center py-12">
+        <div class="g-anim">
+          <h2 class="text-4xl md:text-5xl text-gold mb-4">Our Journey</h2>
+          <p class="max-w-2xl mx-auto text-base md:text-lg text-gray-600 mb-12">
+            Swipe through some of our cherished moments together.
+          </p>
+        </div>
+
+        <!-- Swiper -->
+        <div class="g-anim swiper">
+          <div class="swiper-wrapper">
+            <div
+              class="swiper-slide"
+              style="background-image: url('assets/img1.jpg')"
+            >
+              <div class="card-content">
+                <h3 class="text-2xl font-bold">The Day We Met</h3>
+              </div>
+            </div>
+            <div
+              class="swiper-slide"
+              style="background-image: url('assets/img2.jpg')"
+            >
+              <div class="card-content">
+                <h3 class="text-2xl font-bold">Our First Trip</h3>
+              </div>
+            </div>
+            <div
+              class="swiper-slide"
+              style="background-image: url('assets/img3.jpg')"
+            >
+              <div class="card-content">
+                <h3 class="text-2xl font-bold">She Said Yes!</h3>
+              </div>
+            </div>
+            <div
+              class="swiper-slide"
+              style="background-image: url('assets/img4.jpg')"
+            >
+              <div class="card-content">
+                <h3 class="text-2xl font-bold">To A New Beginning</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="g-anim text-gray-500 mt-4 text-sm">...swipe for more...</p>
+      </section>
+
+      <div class="section-divider my-12"></div>
+
+      <!-- Footer -->
+      <footer class="text-center py-12 px-6">
+        <div class="g-anim">
+          <h3 class="text-3xl text-gold mb-4">With Best Compliments</h3>
+          <p class="text-lg text-gray-700">from friends and family.</p>
+          <a
+            href="mailto:youremail@example.com?subject=RSVP for Aarav & Priya's Engagement"
+            class="rsvp-button inline-block text-white font-bold py-4 px-10 rounded-full mt-8 text-xl"
+          >
+            RSVP
+          </a>
+          <p class="mt-8 text-gray-500">We can't wait to celebrate with you!</p>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // --- GSAP & ScrollTrigger SETUP ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Parallax Effect
+        gsap.to(".parallax-layer", {
+          y: (i, target) =>
+            -ScrollTrigger.maxScroll(window) *
+            (target.id === "layer-back"
+              ? 0.1
+              : target.id === "layer-decor-left"
+              ? 0.3
+              : 0.25),
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".parallax-container",
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+
+        // Initial Hero Animation
+        gsap.from(".hero-text", {
+          duration: 1,
+          y: 50,
+          opacity: 0,
+          stagger: 0.2,
+          ease: "power3.out",
+        });
+
+        // General Scroll-Triggered Animations
+        gsap.utils.toArray(".g-anim").forEach((elem) => {
+          gsap.fromTo(
+            elem,
+            { y: 50, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: elem,
+                start: "top 85%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
+        });
+
+        // --- SWIPER INITIALIZATION ---
+        var swiper = new Swiper(".swiper", {
+          effect: "cards",
+          grabCursor: true,
+          loop: true,
+          cardsEffect: {
+            slideShadows: true,
+            perSlideOffset: 8,
+            perSlideRotate: 2,
+          },
+        });
+
+        // --- COUNTDOWN TIMER ---
+        const countdownDate = new Date("August 29, 2025 19:00:00").getTime();
+
+        const countdownFunction = setInterval(function () {
+          const now = new Date().getTime();
+          const distance = countdownDate - now;
+
+          document.getElementById("days").innerText = Math.floor(
+            distance / (1000 * 60 * 60 * 24)
+          );
+          document.getElementById("hours").innerText = Math.floor(
+            (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          document.getElementById("minutes").innerText = Math.floor(
+            (distance % (1000 * 60 * 60)) / (1000 * 60)
+          );
+          document.getElementById("seconds").innerText = Math.floor(
+            (distance % (1000 * 60)) / 1000
+          );
+
+          if (distance < 0) {
+            clearInterval(countdownFunction);
+            document.getElementById("days").innerText = "0";
+            document.getElementById("hours").innerText = "0";
+            document.getElementById("minutes").innerText = "0";
+            document.getElementById("seconds").innerText = "0";
+          }
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
